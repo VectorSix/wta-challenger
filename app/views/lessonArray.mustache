@@ -1,0 +1,164 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./../../static/favicon/apple-touch-icon-180x180.png">
+  <link rel="shortcut icon" type="image/x-icon" href="./../../static/favicon/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="./../../static/favicon/favicon-96x96.png">
+  <meta name="msapplication-square310x310logo" content="./../../static/favicon/mstile-310x310.png">
+  <meta name="msapplication-TileColor" content="#666666">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+  <link href="./../../static/css/style.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="./../../static/js/lessonArray.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <h1>Lesson Array</h1>
+        <h4>HF-ICT - WebTech Advanced</h4>
+      </div>
+      <div class="column">
+        <img width="175px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATMAAACkCAMAAADMkjkjAAAApVBMVEX///8XjzoaQV4AiCYAM1VCXnUAii2str8ANlaVoq6+2cTO5NOTw54Ahh/V2d0ALlHx8/QAKk7w+PLI3sy21r0IjTScxaRhqHENO1ptf5BidYb3/Phrr3tHoF7Kz9QwmEyDuY63v8crTGeEkZ7l8ehXpmqu0baKvpahyqra6t50s4IplUfX6dux07lHoF0AIEnf4uY7mlMAgxRTaHwAIkkAGERneox7a+iQAAAJl0lEQVR4nO2dbWPaKhTHdelYrzFrq0a7RWt2Z3zWTde77//RrnnQQAIEo+cA1v+7pkHJz5MDHA7QaNwl0KQ7nS2jKBos+62O7sqYrmC9aQ/GnuMQPxVxvHH/jo2rYNKdh9um5xDiN1kduIWB7vqZpc66NxuuiBebVlMgQlq6q2mIDqa1HDk80yrLC3XXVrOCde/gtRypaRXlhLprrUux1xqlXkuZ1tHS+rorj61g0WtXea0qaAvdD4Gm2LQiknQfasLK5O90Pwq8Yq813J3nteSG1tX9SIA6dOPDqJn2TK9CK5Uf6X4wCCVea0zUug/ny7utru3EnV7Ha8nk3EjPNli0+qnXgqSViljf3UhMa+Vc22tJ5C91P3NtHUyrvRwTB8O0WGYD3Y9eQ4lp+VdvEJWZWdVwJl5rC9YgqjKzxM467nSG67UkzEz3Z7FpLXcavJZYpK0bilCJaenzWmKRnm40ZSWmpd1rieVNdBOilXmt642nQeTrxpRpEnst3ySvJZQ/1A0rNq3B9YMPgCJTbbCCSWuux2v5lErXq4trcWcdd6PTa/mjXNuml/9i8YVI4QNwacWmpd1reewPuBk76XWS/D2qqhlaj7az3sRey4gGsRQybHvJdUVmDnjvLEhmXH2T+lrlMOs8sTRVZrBpG9PB+KJpMRhxQtMJKEVmK0hiLnHMgpUpZbbpx5qm/FqxoakxIyEgsu4ehcD5SplFB29BiJPO8AbqzCAnAwIHBUANpcwGKZssfrhqqjLzAN1ZSOCfvp4YZllva9xUZOaP4ZA1PPBnryvWzrZJbZXbADKDQ9Y19tU8MkvSPsnejf9YK/szBzDxoG3sq5kxaw8PWrbTsWOkbGeQc+hLI7sZiS7p02avMoyiambEoYRoliVmS/Wx03Eq4Nt3Sl9qEfpDfcKfr2rMSH/tnrSe40ErMXObSWVVmDluWuTza66nf2ox+0V9xMtbfGVQyYztHLp4bUb53ewk15WYZSU+f8r1WI/ZC/URTwmz0HRm8zBR2gx2FdvN0ww6CLPqd00zs0EydiL7tL+lOA44ZQSBMKtmoJtZxmafjIXi10KBmbOGZFY9DjCEWerV4+6kip0dqwvDrLLhNIRZOiOixixPboFhVunQzGBGRsnX5+/mVsKMzGGZLapeTt3MnHi42QzTr8/jGlvCn8hLSp6WU8Awa1RV3aD+WWMd/8CkdLk4AMzvAGJWNeI0idkuH6NLmFFJB0DMehUUDGI2THxvJTMq6eAKzH495nrPmHUqHBrLbH05M59Qkhi5V6i8O06bq0pmVNJBLWa/f9D6Set3dsuuKuLZo3R5vM0fzUJK4i8nG+p75+HKy271ewW1iv2l/PFrMfvy/nDS0wP3llkFhivHgtiMzUBi5fQXE8K/nqjgzqikg3rMHqhSn7i3IIe3WWZVnqHOF1BJB1DMkGfrwJnRs3RQzFRitVcUODM66QCMGWLstQnPjEk6AGO2QH05oZkxfSMwZo3bYkYnHcAxG2I6NGBmbNIBHLMNpkMDZsYmHcAxA2i8JA8Fy4xNOoBjloSlsATMjB3ZAzLDTKiCZVbYiaTA7JmSMjNBIenwiYlDSOCy9wkLFZjt1T5cVYX1hzSzT68PlIT2U2T2SBX69ZbfJRs+qcbP8iB8WfS7L1tVWZlYXKlj0gGPGaN/VZnReqKYySprF7NC0A2SWV/8WljFrLhsH5KZJPxqFbPiNiSQzBo3YmenpAMMZuLhk1XMinMFoMymQkOziVlpRw1QZhNh39ImZqU6gDITT6fbxKy0hyMsM+HwySZmpZ0OYJm1RDAsYlbe6QCWmXCi0SJm5Z0O2PHmU64X5fEmVejpP5ZZY+flk6yqzOiJ2b1+ZuWdDmhmrz+/Unpj8v5/04VYZkyhQjRkQq0CoMFImDktlyrUjgYiMcbAxjWYQquLkHE2bhHHz57f6bz/r2Jm4l+YFf2eSpixayT7ji+ShNledF8NZOWdDiTMmBwpbczUwl9wMUeyuTM7V5yNW+7MKsTZ6eDOTC4/vDM7V7yNW+7M5OLtdHBnJhX3vIA7M/nnhndm54q7ccudmZwZb6eDOzOZ+MefIDA7ZtzTT28JM364BIHZyCsvArCEWSHpAI8ZLxvZEmbFlT5ozHiLOe1g5o90MePNPtnBTHD2CQYzzmJOO5jx3RkKM85iTjuY8d0ZCrOOpcxER5+g9GnHpZfTCmaiiUIUZuXFnFYwEx0cicKsnI1sBTPR8Qo4483SM9jATHgqEQ6z0mJOG5gJj1fAYVYaPtnATHi8Ag6z0vDJBmbC4xWQ4mcW2pn4eAUkZsVsZAuYcZIOcJkVF3NawEx8WgwSs2I2sgXMxKfFYM0HFBZzms9McloMFrNCNrL5zCSnxWAxKwyfzGcmOV4Bi1lgGzPJ8Qpo85tsJrDxzGSnxaAx69s1Vyc7LQaNGbuY03hmsuMV8HIPajLbF/dy4643YGeIgr3oPlXxkw7QmTEb5EuY+YMhpXa3JVCXyfvf0YUGdKHurgYz6WkxeMyYxZyydSh0br+juA6FKUXYAGuddSjS02LwmE0U84LY31uZGaPLmclOi0HMpWLqZDYzQdJBJkRm9PDJcGbyg+MRmdGLOQ1nJkg6yITIjF7MaToz6YMgMqN35zebmSjpIBMmM6pPbzYz2bc2cJlRvQ2zmRU3bikIkxk1FDCcmfwxUJnlY2ejmQmTDjJ9fhSdvfZMn6n2zjJ7of71qoQrVe8IzWhmFe6s8fNbrr8/6P88f6f+9Z1Zw//2l/rXNyVamWYZNNLuUhLvM+2HblcgV7I2ny7knj1GF8/S6dEJmuL5Ab4wFCSL8ajeJ5BuSEX1PHMPgU1V3rhFuzpLj1y6gQOoxEkHGtWZLsfxwRqGgjPNnZ0UrKfh1vFMBMfZ6cAkLXqzkec5RoGTJB2Yo0mrHR2aR1PASZIODFOn2x+sYovTTk6SdGCiAnc+HOsGZ7g74+rQOix3e23NqizpwHAteuGI6GgdZEkHNmjSmkVNZHCypANrFLcOeOCkSQd2qXNoHZoYrYM06cBCxa3DmMC2DtKkA1sVLDbhFq51kCYd2K1Jbxb5AODkSQc3oMOga3Bli5MnHdyKOt1D6+Bcq3WQJx3clA7N6nVCcuR23RlXVwjJVSQd3KouCslVzdLdsuqG5IwNa2PpFJJTRlY1gf5BlLQOqoOuG+7Qnq0kJOdVNau+I9iD5AOrIiRHVh/dmYkUtw68yBJxPsQIoL46rSwkF5PzfUK8cf/uyhQUuNNwONrtomW7d9Zb+T+lkVkA5LQvzgAAAABJRU5ErkJggg==" style="float: right;" alt="HF-LOGO"/>
+      </div>      
+    </div>
+    <div class="row">
+      <div class="column">
+        <p>
+          {{description}}
+        </p>
+      </div>
+    </div>
+    
+    <div class="lesson-container">
+      <div class="row">
+        <div class="column">
+          <h3>getCapitalLetters</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <b>Parameter:</b><br>
+          ArrData:<br>
+          <textarea class="send-data" data-key="arrData">["Test"]</textarea>
+        </div>
+        <div class="column">
+          <b>Result:</b><br><br>
+          <textarea class="rest-result">["Test"]</textarea>
+        </div>      
+      </div>
+      <div class="row">
+        <div class="column">
+          <button class="rest-send-post" data-url="get_capital_letters">Send</button>
+        </div>
+      </div>         
+      <div class="row">
+        <div class="column">
+          <hr/>
+        </div>
+      </div>  
+    </div>
+
+    <div class="lesson-container">
+      <div class="row">
+        <div class="column">
+          <h3>ArrayUnification</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <b>Parameter:</b><br>
+          ArrData:<br>
+          <textarea class="send-data" data-key="arrData">["Test"]</textarea>
+        </div>
+        <div class="column">
+          <b>Result:</b><br><br>
+          <textarea class="rest-result">["Test"]</textarea>
+        </div>      
+      </div>
+      <div class="row">
+        <div class="column">
+          <button class="rest-send-post" data-url="array_unification">Send</button>
+        </div>
+      </div>         
+      <div class="row">
+        <div class="column">
+          <hr/>
+        </div>
+      </div>  
+    </div>
+
+    <div class="lesson-container">
+      <div class="row">
+        <div class="column">
+          <h3>SortArray</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <b>Parameter:</b><br>
+          ArrData:<br>
+          <textarea class="send-data" data-key="arrData">["Test"]</textarea>
+        </div>
+        <div class="column">
+          <b>Result:</b><br><br>
+          <textarea class="rest-result">["Test"]</textarea>
+        </div>      
+      </div>
+      <div class="row">
+        <div class="column">
+          <button class="rest-send-post" data-url="sort_array">Send</button>
+        </div>
+      </div>         
+      <div class="row">
+        <div class="column">
+          <hr/>
+        </div>
+      </div>  
+    </div>
+
+    <div class="lesson-container">
+      <div class="row">
+        <div class="column">
+          <h3>FindInArray</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <b>Parameter:</b><br>
+          Needle:<br>
+          <input type="text" class="send-data" data-key="needle" value="Test">
+          ArrData:<br>
+          <textarea class="send-data" data-key="arrData">["Test"]</textarea>
+        </div>
+        <div class="column">
+          <b>Result:</b><br><br>
+          <textarea class="rest-result">["Test"]</textarea>
+        </div>      
+      </div>
+      <div class="row">
+        <div class="column">
+          <button class="rest-send-post" data-url="find_in_array">Send</button>
+        </div>
+      </div>         
+      <div class="row">
+        <div class="column">
+          <hr/>
+        </div>
+      </div>  
+    </div>
+
+  </div>
+</body>
+</html>
