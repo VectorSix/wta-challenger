@@ -6,8 +6,8 @@
       "contact": "info@severin-holm.ch",
       "version": "1.0.0.Beta",
       "licence": "GNU GPLv3",
-      "repository": "git-repo-url",
-      "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      "repository": "https://github.com/rushpuppych/wta-challenger.git",
+      "description": "Das HF-ICT WebTech Advanced Challenger Projekt dient als gemeinsame Ausgangslage für diverse JavaScript Code Challenges. Diese Applikation wird im Verlauf des Moduls immer weiter ausgebaut und mit neuen Challenges angereichert.",
       "hyperlinks": [{
             "name": "WebInterface",
             "url": "http://localhost:5500/"

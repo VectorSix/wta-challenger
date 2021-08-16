@@ -23,7 +23,7 @@
   <script src="./../../static/js/lessonArray.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="container">  
     <div class="row">
       <div class="column">
         <h1>Lesson Array</h1>
@@ -36,7 +36,7 @@
     <div class="row">
       <div class="column">
         <p>
-          {{description}}
+          Folgende Aufgaben dienen dazu den Umgang mit Arrays zu trainieren. Implementieren Sie zu diesem Zweck die Leerstehenden Methoden im file: "app/business/LessonArray.js". Über diese Oberfläche können Sie dann Ihren Code prüfen.
         </p>
       </div>
     </div>
@@ -44,18 +44,26 @@
     <div class="lesson-container">
       <div class="row">
         <div class="column">
+          <hr/>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="column">
           <h3>getCapitalLetters</h3>
+          <p>
+            Diese Methode nimmt einen Array als Parameter und gibt nur die Array Nodes welche mit Grossbuchstaben gefüllt sind, zurück. Wenn Wörter oder Zahlen im Array stehen, werden diese nicht berücksichtigt (werden nicht ausgegeben).
+          </p>          
         </div>
       </div>
       <div class="row">
         <div class="column">
           <b>Parameter:</b><br>
           ArrData:<br>
-          <textarea class="send-data" data-key="arrData">["Test"]</textarea>
+          <textarea class="send-data" data-key="arrData">['a', 'b', 'C', 'D']</textarea>
         </div>
         <div class="column">
           <b>Result:</b><br><br>
-          <textarea class="rest-result">["Test"]</textarea>
+          <textarea class="rest-result">[]</textarea>
         </div>      
       </div>
       <div class="row">
@@ -63,28 +71,31 @@
           <button class="rest-send-post" data-url="get_capital_letters">Send</button>
         </div>
       </div>         
-      <div class="row">
-        <div class="column">
-          <hr/>
-        </div>
-      </div>  
     </div>
 
     <div class="lesson-container">
       <div class="row">
         <div class="column">
+          <hr/>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="column">
           <h3>ArrayUnification</h3>
+          <p>
+            Diese Methode eliminiert alle doppelt vorkommenden Werte in einem Array. Der Rückgabe wert ist ein Array, bei dem jedes Element nur einmalig vorkommt.
+          </p>          
         </div>
       </div>
       <div class="row">
         <div class="column">
           <b>Parameter:</b><br>
           ArrData:<br>
-          <textarea class="send-data" data-key="arrData">["Test"]</textarea>
+          <textarea class="send-data" data-key="arrData">['red', 'green', 'red', 'blue']</textarea>
         </div>
         <div class="column">
           <b>Result:</b><br><br>
-          <textarea class="rest-result">["Test"]</textarea>
+          <textarea class="rest-result">[]</textarea>
         </div>      
       </div>
       <div class="row">
@@ -92,73 +103,74 @@
           <button class="rest-send-post" data-url="array_unification">Send</button>
         </div>
       </div>         
-      <div class="row">
-        <div class="column">
-          <hr/>
-        </div>
-      </div>  
     </div>
 
     <div class="lesson-container">
       <div class="row">
         <div class="column">
+          <hr/>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="column">
           <h3>SortArray</h3>
+          <p>
+            Diese Methode sortiert einen Array nach alphabetischer Reihenfolge und gibt den sortierten Array als Rückgabewert zurück.
+          </p>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <b>Parameter:</b><br>
           ArrData:<br>
-          <textarea class="send-data" data-key="arrData">["Test"]</textarea>
+          <textarea class="send-data" data-key="arrData">["Auto", "Velo", "E-Bike", "Skateboard"]</textarea>
         </div>
         <div class="column">
           <b>Result:</b><br><br>
-          <textarea class="rest-result">["Test"]</textarea>
+          <textarea class="rest-result">[]</textarea>
         </div>      
       </div>
       <div class="row">
         <div class="column">
           <button class="rest-send-post" data-url="sort_array">Send</button>
         </div>
-      </div>         
-      <div class="row">
-        <div class="column">
-          <hr/>
-        </div>
-      </div>  
+      </div> 
     </div>
 
     <div class="lesson-container">
       <div class="row">
         <div class="column">
+          <hr/>
+        </div>
+      </div>      
+      <div class="row">
+        <div class="column">
           <h3>FindInArray</h3>
+          <p>
+            Diese Methode akzeptiert einen mehrdimensionalen Array als Parameter und einen Suchbegriff (needle). Wenn der Suchbegriff innerhalb des Arrays vorkommt, wird ein TRUE und sonst ein FALSE ausgegeben. Profis verwenden bitte den rekursiven Ansatz.
+          </p>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <b>Parameter:</b><br>
           Needle:<br>
-          <input type="text" class="send-data" data-key="needle" value="Test">
+          <input type="text" class="send-data" data-key="needle" value="rot">
           ArrData:<br>
-          <textarea class="send-data" data-key="arrData">["Test"]</textarea>
+          <textarea class="send-data" data-key="arrData">["Auto", ["Banane", "Apfel", ["grün", "rot", "gelb"]]]</textarea>
         </div>
         <div class="column">
           <b>Result:</b><br><br>
-          <textarea class="rest-result">["Test"]</textarea>
+          <textarea class="rest-result">[]</textarea>
         </div>      
       </div>
       <div class="row">
         <div class="column">
           <button class="rest-send-post" data-url="find_in_array">Send</button>
         </div>
-      </div>         
-      <div class="row">
-        <div class="column">
-          <hr/>
-        </div>
-      </div>  
+      </div>
     </div>
-
+    <br><br><br>&nbsp;
   </div>
 </body>
 </html>
