@@ -15,12 +15,20 @@
          {
             "name": "[1/8] Lesson Array",
             "url": "http://localhost:5500/lesson_array"
-         }
+         },
+         {
+            "name": "[2/8] Lesson REST",
+            "url": "http://localhost:5500/lesson_rest_client"
+         }    
       ]
    },
    "WebServerRestApi": {
       "port": "5500",
       "staticFolder": "./../static",
       "viewsFolder": "./../views"
+   },
+
+   "WebSocketServer": {
+      "port": "5505"
    }
 }

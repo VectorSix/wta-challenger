@@ -13,8 +13,10 @@
 const Util = require("./core/Util.js");
 const config = require("./config.json");
 const WebServerRestApi = require("./core/WebServerRestApi");
+const WebSocketServer = require("./core/WebSocketServer");
 const RootRouteController = require("./controller/RootRouteController");
 const LessonArrayController = require("./controller/LessonArrayController");
+const LessonRestClientController = require("./controller/LessonRestClientController");
 
 // Start StreamlineJS Server
 const util = new Util();
@@ -23,8 +25,14 @@ util.printDescription(config.General);
 
 // Start WebServer and REST API
 const webServerRestApi = new WebServerRestApi(config.WebServerRestApi);
+webServerRestApi.useGenericCrudApi();
 webServerRestApi.listening(config.WebServerRestApi.port);
 
 // Add Controller Routes to REST API
 rootRouteController = new RootRouteController(webServerRestApi, config);
 lessonArrayController = new LessonArrayController(webServerRestApi, config);
+lessonRestClientController = new LessonRestClientController(webServerRestApi, config);
+
+// Start WebSocket Browser Connection Server
+const webSocketServer = new WebSocketServer(config.WebSocketServer);
+webSocketServer.listening(config.WebSocketServer.port);
