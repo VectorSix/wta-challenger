@@ -25,7 +25,8 @@ util.printDescription(config.General);
 
 // Start WebServer and REST API
 const webServerRestApi = new WebServerRestApi(config.WebServerRestApi);
-webServerRestApi.useGenericCrudApi();
+webServerRestApi.useGenericCrudApi({ isAuth: false, isCrypted: false });
+webServerRestApi.useAuthenticationService();
 webServerRestApi.listening(config.WebServerRestApi.port);
 
 // Add Controller Routes to REST API

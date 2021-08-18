@@ -25,7 +25,10 @@
    "WebServerRestApi": {
       "port": "5500",
       "staticFolder": "./../static",
-      "viewsFolder": "./../views"
+      "viewsFolder": "./../views",
+      "cryptKey": "Secret",
+      "jwtPublicCert": "",
+      "jwtPrivateCert": ""
    },
 
    "WebSocketServer": {

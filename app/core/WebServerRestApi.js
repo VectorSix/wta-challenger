@@ -21,6 +21,7 @@ const WebServerRestApi = function (opt) {
          port: 5500,
          staticFolder: "./../static",
          viewsFolder: "./../views",
+         cryptKey: "",
       },
       typeof opt !== "undefined" ? opt : {}
    );
@@ -78,56 +79,6 @@ const WebServerRestApi = function (opt) {
    };
 
    /**
-    * PUBLIC: UseGenericCrudApi
-    * Using Generic CRUD Rest API Server Module.
-    */
-   this.useGenericCrudApi = () => {
-      const genericCrudRestApi = new GenericCrudRestApi();
-
-      // List (?from=1&to=10)
-      $this.addRoute("get", "/rest_crud/:entity", (req, res) => {
-         const result = genericCrudRestApi.list(req.params.entity, req.query.from, req.query.to);
-         res.send(JSON.stringify(result));
-      });
-
-      // Find
-      $this.addRoute("get", "/rest_crud/:entity/:attr/:value", (req, res) => {
-         const result = genericCrudRestApi.find(req.params.entity, req.params.attr, req.params.value);
-         res.send(JSON.stringify(result));
-      });
-
-      // Create
-      $this.addRoute("post", "/rest_crud/:entity", (req, res) => {
-         const result = genericCrudRestApi.create(req.params.entity, req.body.arrData);
-         res.send(JSON.stringify(result));
-      });
-
-      // Read
-      $this.addRoute("get", "/rest_crud/:entity/:id", (req, res) => {
-         const result = genericCrudRestApi.read(req.params.entity, req.params.id);
-         res.send(JSON.stringify(result));
-      });
-
-      // Replace
-      $this.addRoute("put", "/rest_crud/:entity/:id", (req, res) => {
-         const result = genericCrudRestApi.replace(req.params.entity, req.params.id, req.body.arrData);
-         res.send(JSON.stringify(result));
-      });
-
-      // Update
-      $this.addRoute("patch", "/rest_crud/:entity/:id", (req, res) => {
-         const result = genericCrudRestApi.update(req.params.entity, req.params.id, req.body.arrData);
-         res.send(JSON.stringify(result));
-      });
-
-      // Delete
-      $this.addRoute("delete", "/rest_crud/:entity/:id", (req, res) => {
-         const result = genericCrudRestApi.delete(req.params.entity, req.params.id);
-         res.send(JSON.stringify(result));
-      });
-   };
-
-   /**
     * PRIVATE: HandleDefaultRoutes
     * This handles the buildin REST Routes.
     */
@@ -159,6 +110,125 @@ const WebServerRestApi = function (opt) {
 
       console.log(chalk.blue.bold("[REST_API] ") + prefix + chalk.bold("FROM") + ": " + (ip == "::1" ? "localhost" : ip) + " " + chalk.bold("URL") + ": " + req.method + " " + req.url);
    };
+
+   /**
+    * PUBLIC: UseGenericCrudApi
+    * Using Generic CRUD Rest API Server Module.
+    * @param {*} config
+    */
+   this.useGenericCrudApi = (config) => {
+      const genericCrudRestApi = new GenericCrudRestApi(config);
+
+      // Request Initialisator
+      const initRequest = (req) => {
+         if (config.isCrypted) {
+            genericCrudRestApi.setCryptKey(options.cryptKey);
+         }
+         if (config.isAuth) {
+            genericCrudRestApi.setUserId(req.userId); // TODO: set UserID from Request (JWWT Middeware should set this...)
+         }
+      };
+
+      // Set Authentication Middleware if required
+      let middleware = null;
+      let apiPath = "/public-crud";
+      if (config.isAuth) {
+         middleware = null; // TODO: JWT MITTLEWARE
+         apiPath = "/private-crud";
+      }
+
+      // List (?from=1&to=10)
+      $this.addRoute(
+         "get",
+         apiPath + "/:entity",
+         (req, res) => {
+            initRequest(req);
+            const result = genericCrudRestApi.list(req.params.entity, req.query.from, req.query.to);
+            res.send(JSON.stringify(result));
+         },
+         middleware
+      );
+
+      // Find
+      $this.addRoute(
+         "get",
+         apiPath + "/:entity/:attr/:value",
+         (req, res) => {
+            initRequest(req);
+            const result = genericCrudRestApi.find(req.params.entity, req.params.attr, req.params.value);
+            res.send(JSON.stringify(result));
+         },
+         middleware
+      );
+
+      // Create
+      $this.addRoute(
+         "post",
+         apiPath + "/:entity",
+         (req, res) => {
+            initRequest(req);
+            const result = genericCrudRestApi.create(req.params.entity, req.body);
+            res.send(JSON.stringify(result));
+         },
+         middleware
+      );
+
+      // Read
+      $this.addRoute(
+         "get",
+         apiPath + "/:entity/:id",
+         (req, res) => {
+            initRequest(req);
+            const result = genericCrudRestApi.read(req.params.entity, req.params.id);
+            res.send(JSON.stringify(result));
+         },
+         middleware
+      );
+
+      // Update
+      $this.addRoute(
+         "patch",
+         apiPath + "/:entity/:id",
+         (req, res) => {
+            initRequest(req);
+            const result = genericCrudRestApi.update(req.params.entity, req.params.id, req.body);
+            res.send(JSON.stringify(result));
+         },
+         middleware
+      );
+
+      // Replace
+      $this.addRoute(
+         "put",
+         apiPath + "/:entity/:id",
+         (req, res) => {
+            initRequest(req);
+            const result = genericCrudRestApi.replace(req.params.entity, req.params.id, req.body);
+            res.send(JSON.stringify(result));
+         },
+         middleware
+      );
+
+      // Delete
+      $this.addRoute(
+         "delete",
+         apiPath + "/:entity/:id",
+         (req, res) => {
+            initRequest(req);
+            const result = genericCrudRestApi.delete(req.params.entity, req.params.id);
+            res.send(JSON.stringify(result));
+         },
+         middleware
+      );
+   };
+
+   /**
+    * PUBLIC: UseAuthenticationService
+    * This is enabling the Authentication Service. If This is enable a User DB File will be created
+    * and a Simple USER Login API will be enabled.
+    * @param {*} config
+    */
+   this.useAuthenticationService = (config) => {};
 
    // Call Init
    _private.init();

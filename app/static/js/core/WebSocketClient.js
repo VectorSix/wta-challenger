@@ -3,18 +3,18 @@
  * @description
  *
  */
-var WebSocketClient = function (options) {
+var WebSocketClient = function (opt) {
    let $this = this;
    let _private = {};
    let socket = null;
    let cmdEvents = {};
 
    // CodePirate System Variables
-   this.options = $.extend(
+   let options = $.extend(
       {
          host: "ws://localhost:5505",
       },
-      options
+      opt
    );
 
    /**

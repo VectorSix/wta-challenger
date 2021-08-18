@@ -10,31 +10,18 @@ const Util = function () {
       const logoText = config.logoText;
       const data = figlet.textSync(logoText, {}).split("\r\n");
 
-      console.log(
-         chalk.blue.bold(
-            "============================================================================================="
-         )
-      );
+      console.log(chalk.blue.bold("============================================================================================="));
       for (let i in data) {
          console.log(chalk.blue(data[i]));
       }
-      console.log(
-         chalk.blue.bold(
-            "============================================================================================="
-         )
-      );
+      console.log(chalk.blue.bold("============================================================================================="));
    };
 
    /**
     * Printing The StreamLine Description
     */
    this.printDescription = (config) => {
-      console.log(
-         chalk.white.bold("      AUTHOR: ") +
-            config.author +
-            " - " +
-            config.contact
-      );
+      console.log(chalk.white.bold("      AUTHOR: ") + config.author + " - " + config.contact);
       console.log(chalk.white.bold("     PRODUCT: ") + config.product);
       console.log(chalk.white.bold("     VERSION: ") + config.version);
       console.log(chalk.white.bold("     LICENCE: ") + config.licence);
@@ -51,19 +38,25 @@ const Util = function () {
       console.log(" ");
       for (let i in config.hyperlinks) {
          const link = config.hyperlinks[i];
-         const environment =
-            link.name + " - " + chalk.underline.green(link.url);
+         const environment = link.name + " - " + chalk.underline.green(link.url);
          if (i == 0) {
             console.log(chalk.white.bold("ENVIRONMENTS: ") + environment);
          } else {
             console.log("              " + environment);
          }
       }
-      console.log(
-         chalk.blue.bold(
-            "============================================================================================="
-         )
-      );
+      console.log(chalk.blue.bold("============================================================================================="));
+   };
+
+   /**
+    * Generates a UUID
+    */
+   this.uuid = () => {
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+         var r = (Math.random() * 16) | 0,
+            v = c == "x" ? r : (r & 0x3) | 0x8;
+         return v.toString(16);
+      });
    };
 };
 module.exports = Util;

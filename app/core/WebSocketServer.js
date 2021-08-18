@@ -1,6 +1,7 @@
 const chalk = require("chalk");
 const PubSub = require("pubsub-js");
 const WebSocket = require("ws");
+const Util = require("./Util.js");
 
 /**
  * WebSocket Server
@@ -34,16 +35,8 @@ const WebSocketServer = function (opt) {
       port = typeof port === "undefined" ? options.port : port;
       server = new WebSocket.Server({ port: port });
 
-      console.log(
-         chalk.blue.bold("[WebSocket] ") +
-            "Server starting................ " +
-            chalk.green.bold("[SUCCESS]")
-      );
-      console.log(
-         chalk.blue.bold("[WebSocket] ") +
-            "WebSocket Server is listening on Port: " +
-            chalk.bold(options.port)
-      );
+      console.log(chalk.blue.bold("[WebSocket] ") + "Server starting................ " + chalk.green.bold("[SUCCESS]"));
+      console.log(chalk.blue.bold("[WebSocket] ") + "WebSocket Server is listening on Port: " + chalk.bold(options.port));
 
       // Call Client Connections Handler
       _private.handleClientConnections();
@@ -103,19 +96,10 @@ const WebSocketServer = function (opt) {
     */
    _private.handleClientConnections = () => {
       server.on("connection", (client) => {
-         client.client_id = _private.uuidv4();
+         const util = new Util();
+         client.client_id = util.uuid();
          console.log(
-            chalk.blue.bold("[WebSocket] ") +
-               chalk.green("NEW CLIENT CONNECTED") +
-               ": " +
-               chalk.bold("IP") +
-               ": " +
-               (client._socket.remoteAddress == "::1"
-                  ? "localhost"
-                  : client._socket.remoteAddress) +
-               chalk.bold("   ID:") +
-               ": " +
-               client.client_id
+            chalk.blue.bold("[WebSocket] ") + chalk.green("NEW CLIENT CONNECTED") + ": " + chalk.bold("IP") + ": " + (client._socket.remoteAddress == "::1" ? "localhost" : client._socket.remoteAddress) + chalk.bold("   ID:") + ": " + client.client_id
          );
 
          // Handle Message
@@ -158,28 +142,8 @@ const WebSocketServer = function (opt) {
             " " +
             chalk.bold("IP") +
             ": " +
-            (client._socket.remoteAddress == "::1"
-               ? "localhost"
-               : client._socket.remoteAddress) +
-            (typeof data === "undefined"
-               ? ""
-               : chalk.bold(" DATA") + ": " + data)
-      );
-   };
-
-   /**
-    * PRIVATE: uuidv4
-    * This is generating a new UUID
-    * @returns
-    */
-   _private.uuidv4 = () => {
-      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-         /[xy]/g,
-         function (c) {
-            var r = (Math.random() * 16) | 0,
-               v = c == "x" ? r : (r & 0x3) | 0x8;
-            return v.toString(16);
-         }
+            (client._socket.remoteAddress == "::1" ? "localhost" : client._socket.remoteAddress) +
+            (typeof data === "undefined" ? "" : chalk.bold(" DATA") + ": " + data)
       );
    };
 
